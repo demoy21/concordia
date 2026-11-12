@@ -300,7 +300,7 @@ tr[data-a]{cursor:pointer}
   <h1>CONCORDIA</h1>
   <p>Juga a futbol quan vulguis, amb qui vulguis, com un professional.</p>
   <div class="col" id="guide" style="gap:6px"></div>
-  <p class="small" style="margin-top:14px">Equips, jugadors, patrocinadors i resultats són dades d'exemple. Els preus surten del full «Despeses inicials».</p>
+  <p class="small" style="margin-top:14px">Equips, jugadors i resultats són dades d'exemple. Els preus surten del full «Despeses inicials».</p>
 </div>
 <div class="device"><div id="app"></div><canvas id="fx" aria-hidden="true"></canvas></div>
 
@@ -317,7 +317,6 @@ const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){retu
 
 /* ---------- Dades d'exemple ---------- */
 const ME={nom:'Marc Ferrer',equip:'Xarel·lo FC',dorsal:9};
-const SPON={mvp:'Montclar',main:'Caves Roquerola'};
 const TEAMS=[['Dinamo Vilafranca',5,0,0,19,6],['Real Cava',4,1,0,15,7],['Xarel·lo FC',4,0,1,14,8],['Sporting Penedès',3,1,1,12,8],['Olèrdola 7',3,1,1,11,9],['Rambla United',3,0,2,13,10],['Cellers FC',2,2,1,9,8],['Atlètic Sesgarrigues',2,1,2,10,10],['La Girada CF',2,1,2,8,9],['Moja City',2,0,3,9,12],['Pacs Athletic',1,2,2,7,9],['Font-rubí 7',1,1,3,8,12],['Les Cabanyes CF',1,1,3,6,11],['Vinya Stars',1,0,4,7,13],['Sant Fèlix 7',0,2,3,5,12],['Els Falcons',0,1,4,4,13]];
 const tpts=t=>t[1]*3+t[2];
 const FIXT=[['J1','4 set.','Xarel·lo FC','Moja City','3–1'],['J2','11 set.','La Girada CF','Xarel·lo FC','1–2'],['J3','18 set.','Xarel·lo FC','Dinamo Vilafranca','2–4'],['J4','25 set.','Vinya Stars','Xarel·lo FC','1–4'],['J5','2 oct.','Xarel·lo FC','Cellers FC','3–1'],['J6','9 oct.','Xarel·lo FC','Real Cava',null,'Ds · 18:00 · Vilafranca'],['J7','16 oct.','Olèrdola 7','Xarel·lo FC',null,'Ds · 18:30 · Sant Cugat S.'],['J8','23 oct.','Xarel·lo FC','Els Falcons',null,'Dg · 11:00 · Vilafranca'],['J9','30 oct.','Rambla United','Xarel·lo FC',null,'Ds · 19:00 · Vilafranca']];
@@ -360,7 +359,7 @@ const affinity=t=>{const d=IDENT[t];return 30*(d[0]===S.estil)+25*(d[1]===S.comp
 const M_JOR=[{id:'gol',e:'El killer',t:'Marca un gol al rival',p:50},{id:'tunel',e:'Olé!',t:'Fes un túnel a un rival',p:40},{id:'ass',e:'El repartidor',t:'Dona una assistència de gol',p:40},{id:'cap',e:'Cap d\'or',t:'Remata de cap, a porta o a la grada',p:30},{id:'net',e:'Cavaller',t:'Acaba sense targetes i dona la mà a l\'àrbitre',p:20},{id:'vermut',e:'Tercer temps',t:'Queda\'t a fer el vermut amb l\'equip rival',p:25}];
 const M_MES=[{id:'pichichi',e:'Pitxitxi d\'octubre',t:'Marca 5 gols aquest mes',p:150,prog:2,max:5},{id:'rata',e:'Rata de camp',t:'Ves a 8 entrenaments',p:120,prog:5,max:8},{id:'ratxa',e:'Imparables',t:'Guanyeu 3 partits seguits',p:100,prog:2,max:3},{id:'porter',e:'Porter per un dia',t:'Juga mitja part sota els pals',p:80,prog:0,max:1},{id:'insta',e:'Influencer',t:'Publica una jugada teva a Instagram',p:60,prog:0,max:1},{id:'amic',e:'Fitxatge estrella',t:'Porta un amic a la Lliga 2',p:200,prog:0,max:1}];
 const SHOP=[{id:'fan',t:'+5 M per al Fantasy',d:'Pressupost extra al mercat',p:200},{id:'sam',t:'Samarreta d\'entrenament',d:'Edició Concordia negra i or',p:300},{id:'pil',t:'Pilota oficial',d:'La dels partits de lliga',p:450},{id:'vid',t:'Anàlisi de vídeo',d:'Sessió 1 a 1 amb l\'entrenador',p:500},{id:'desc',t:'10 % de descompte',d:'A la quota de la Lliga 2',p:600},{id:'gala',t:'Entrada a la gala',d:'Gala de premis del 23 de gener',p:900}];
-const NEWS=[{id:1,c:'Canvi',d:'Avui · 12:40',t:'El partit de la J7 es juga a les 18:30',b:'Olèrdola 7 – Xarel·lo FC passa de les 17:00 a les 18:30, al camp de Sant Cugat Sesgarrigues. El calendari de l\'app ja està actualitzat.'},{id:2,c:'Entrenaments',d:'Avui · 9:15',t:'Dimarts 12 d\'octubre és festiu',b:'Els equips que entrenen dimarts i dijous recuperen la sessió el divendres 15, a la mateixa hora i al mateix camp.'},{id:3,c:'Fantasy',d:'Ahir',t:'El mercat s\'actualitza cada dia a les 8:00',b:'El preu de cada jugador puja o baixa segons els gols, les assistències i la nota dels últims cinc dies. Fitxa abans que pugin.'},{id:4,c:'Lliga',d:'4 oct.',t:`Pol Vidal, MVP ${SPON.mvp} de la jornada 5`,b:'El davanter del Dinamo Vilafranca va fer 3 gols i 1 assistència. Ja porta 9 gols i lidera la taula de golejadors.'},{id:5,c:'Comunitat',d:'1 oct.',t:'La gala de premis serà el 23 de gener',b:'Després de la final de la Lliga 1 entregarem els premis individuals i col·lectius. Pots aconseguir l\'entrada a la botiga de recompenses.'},{id:6,c:'Patrocini',d:'28 set.',t:`${SPON.main}, patrocinador oficial de la Lliga 1`,b:'El seu nom anirà al centre de la samarreta de tots els equips. Gràcies als patrocinadors mantenim la quota de la lliga.'}];
+const NEWS=[{id:1,c:'Canvi',d:'Avui · 12:40',t:'El partit de la J7 es juga a les 18:30',b:'Olèrdola 7 – Xarel·lo FC passa de les 17:00 a les 18:30, al camp de Sant Cugat Sesgarrigues. El calendari de l\'app ja està actualitzat.'},{id:2,c:'Entrenaments',d:'Avui · 9:15',t:'Dimarts 12 d\'octubre és festiu',b:'Els equips que entrenen dimarts i dijous recuperen la sessió el divendres 15, a la mateixa hora i al mateix camp.'},{id:3,c:'Fantasy',d:'Ahir',t:'El mercat s\'actualitza cada dia a les 8:00',b:'El preu de cada jugador puja o baixa segons els gols, les assistències i la nota dels últims cinc dies. Fitxa abans que pugin.'},{id:4,c:'Lliga',d:'4 oct.',t:`Pol Vidal, MVP de la jornada 5`,b:'El davanter del Dinamo Vilafranca va fer 3 gols i 1 assistència. Ja porta 9 gols i lidera la taula de golejadors.'},{id:5,c:'Comunitat',d:'1 oct.',t:'La gala de premis serà el 23 de gener',b:'Després de la final de la Lliga 1 entregarem els premis individuals i col·lectius. Pots aconseguir l\'entrada a la botiga de recompenses.'}];
 const NOTIS=[['Dissabte jugues a les 18:00','Xarel·lo FC – Real Cava al camp de Vilafranca. Confirma si hi vas.','fa 5 min',{tab:'inici'}],['Pol Vidal puja al mercat','Avui val més que ahir. Mira com es mou el teu Fantasy.','8:00',{tab:'fantasy',fan:'mercat'}],['Canvi d\'horari a la jornada 7','El partit contra l\'Olèrdola 7 passa a les 18:30.','ahir',{page:{name:'novetats',arg:''}}],['Et queda una missió fàcil','«Tercer temps»: queda\'t a fer el vermut amb el rival. +25 punts.','ahir',{tab:'missions'}]];
 const PRICE={basic:250,extra:12.5,mesos:5}, TOTAL={basic:250,tot:250+12.5*5};
 const PROF={DAV:[7,3,[1,1,1,2,2]],MIG:[5,5,[1,0,1,1,2]],DEF:[2,3,[0,0,1,0,1]],POR:[0,1,[0,0,0,0,0]]};
@@ -368,7 +367,7 @@ const PROF={DAV:[7,3,[1,1,1,2,2]],MIG:[5,5,[1,0,1,1,2]],DEF:[2,3,[0,0,1,0,1]],PO
 /* ---------- Estat ---------- */
 const S={team:{name:ME.equip,custom:false,crest:0,up:null,kitUp:null,kit:{pat:'ratlles',c1:'#6d1030',c2:'#f2d78e',ink:'#ffffff'}},screen:'welcome',step:0,mode:null,pos:null,level:null,days:[],estil:null,comp:null,amb:null,ideals:[],plan:null,ready:false,
   tab:'inici',cal:'partits',rank:'lliga',fan:'equip',frank:'companys',mis:'jornada',mpos:'TOTS',
-  page:null,sheet:null,toast:null,tour:null,help:null,greeted:false,acted:{},punts:420,done:new Set(),prog:{},bought:new Set(),read:new Set([4,5,6]),open:null,att:{m:null,t:'si'},day:0,bank:12,lineup:null,capt:null,seenFan:false,
+  page:null,sheet:null,toast:null,tour:null,help:null,greeted:false,acted:{},punts:420,done:new Set(),prog:{},bought:new Set(),read:new Set([4,5]),open:null,att:{m:null,t:'si'},day:0,bank:12,lineup:null,capt:null,seenFan:false,
   org:{g:{},mvp:null},actas:{},val:{},ncat:'Lliga',last:null,jres:null,
   chat:[{w:'Joel Serra',t:'Qui porta les pilotes dissabte?',h:'19:02'},{w:'Biel Puig',t:'Jo. I el Quim porta les birres del tercer temps 🍻',h:'19:05'},{w:'Nil Rovira',t:'El Real Cava va segon, eh. Aquesta setmana s\'ha d\'entrenar de veritat.',h:'19:11'}]};
 const $=document.getElementById('app');let ANIM='enter';
@@ -403,7 +402,7 @@ const pat=k=>({llisa:k.c1,
 /* ---------- Samarreta en 3D de veritat (three.js): una malla amb volum que es pinta amb el disseny de l'equip ---------- */
 const K3={ang:0,to:0,ok:false,sig:'',size:0,imgs:{}};
 const kit=(k,o={})=>{const h=o.h||230,face=s=>`<span class="kface ${s}" style="--mx:${s==='f'?0:100}%"><i class="kc"></i><i class="ks"></i><i class="kl"></i>${o.mini?'':s==='f'
-    ?`<span class="kcr">${crest(o.team||ME.equip,0,Math.round(h*.105))}</span><span class="kt" style="top:44%;font-size:${(h*.04).toFixed(1)}px;letter-spacing:.06em">${esc(SPON.main)}</span>`
+    ?`<span class="kcr">${crest(o.team||ME.equip,0,Math.round(h*.105))}</span>`
     :`<span class="kt" style="top:21%;font-size:${(h*.055).toFixed(1)}px;letter-spacing:.1em">${esc(o.team?K3.sub.name:ME.nom.split(' ').pop())}</span><span class="kt" style="top:30%;font-size:${(h*.27).toFixed(1)}px">${o.team?K3.sub.num:ME.dorsal}</span>`}</span>`;
   return `<span class="kit ${o.mini?'flat':'main'}" style="--h:${h}px;--pat:${pat(k)};--ink:${k.ink}"><span class="kturn" style="--ry:${o.mini?0:(K3.ang*180/Math.PI).toFixed(1)}deg">${face('f')}${o.mini?'':face('b')}</span></span>`};
 const kitCtl=()=>`<div class="row krot"><button class="iconbtn" data-a="kitRot" data-v="-1" aria-label="Gira cap a l'esquerra">${ic('<path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/>')}</button><button class="btn ghost sm" style="width:auto;padding:9px 22px" data-a="kitFlip">Gira-la</button><button class="iconbtn" data-a="kitRot" data-v="1" aria-label="Gira cap a la dreta">${ic('<path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/>')}</button></div>`;
@@ -460,7 +459,7 @@ function k3Paint(){if(!K3.ok)return;const sb=K3.sub||{kit:S.team.kit,crest:S.tea
     if(!m){const cr=sb.crest,up=cr==='up'&&sb.up,im=up?k3Img(sb.up,'up'):k3Img(getComputedStyle(document.documentElement).getPropertyValue('--escuts').replace(/^\s*url\(["']?|["']?\)\s*$/g,''),'sheet');
       const w=.15/(2*SHX)*H,hh=.15/SHH*H,cx=X(.175),cy=Y(.93);
       if(im){if(up)c.drawImage(im,cx-w/2,cy-hh/2,w,hh);else{const q=im.naturalWidth/4,ci=+cr||0;c.drawImage(im,(ci%4)*q,(ci/4|0)*q,q,q,cx-w/2,cy-hh/2,w,hh)}}
-      text(SPON.main.toUpperCase(),0,.69,.068)}
+      }
     else{text(sb.name.toUpperCase(),0,.975,.105);text(String(sb.num),0,.62,.5)}
     c.restore()}
   K3.inn.material.color.set(k.c1).multiplyScalar(.28);K3.tex.needsUpdate=true;k3Frame()}
@@ -470,7 +469,7 @@ function k3Loop(){cancelAnimationFrame(K3.raf);const d=K3.to-K3.ang;if(Math.abs(
 function mountKit(){const el=$.querySelector('.kit.main');if(!el||!k3Init())return;const h=el.clientWidth||230;
   if(K3.size!==h){K3.size=h;K3.r.setSize(h,h,false)}
   if(K3.cv.parentNode!==el)el.appendChild(K3.cv);el.classList.add('on3d');
-  const sig=JSON.stringify([K3.sub&&[K3.sub.team,K3.sub.name],S.team.kit,S.team.crest,(S.team.up||'').length,ME.dorsal,ME.nom,SPON.main]);
+  const sig=JSON.stringify([K3.sub&&[K3.sub.team,K3.sub.name],S.team.kit,S.team.crest,(S.team.up||'').length,ME.dorsal,ME.nom]);
   if(sig!==K3.sig){K3.sig=sig;k3Paint()}else k3Frame()}
 window.K3ready=()=>mountKit();
 /* Dorsal propi i codi per convidar els companys */
@@ -637,7 +636,7 @@ function home(){
   ${S.plan==='basic'?`<div class="card col"><h2 class="h2">Entrenaments</h2><span class="muted small">El teu pla és el Bàsic. Amb el Tot inclòs tens 2 entrenaments setmanals amb entrenador titulat.</span><button class="btn ghost" data-a="upgrade">Passa al Tot inclòs · + ${eur(PRICE.extra)}/mes</button></div>`:
   `<div class="card col"><div class="row between"><h2 class="h2">Proper entrenament</h2><span class="chip">${tb} · 21:00</span></div><div class="row"><span class="badge">${tb}</span><div class="grow"><b>${tday} · 21:00 – 22:00</b><br><span class="muted small">Camp de Vilafranca · Entrenador: Sergi Mas</span></div></div>${attRow('t',7)}</div>`}
   <button class="card col" data-a="match" data-v="${lastI}"><span class="row between"><span class="h2">Últim partit</span><span class="chip ${lw>0?'ok':lw<0?'bad':''}">${lw>0?'Victòria':lw<0?'Derrota':'Empat'}</span></span><span class="row between"><span>${lf[2]} <b class="num">${la} – ${lc}</b> ${lf[3]}</span><span class="link">Fitxa i vídeo</span></span></button>
-  <div class="card row">${ico('handshake',40)}<span class="grow"><span class="eyebrow">Patrocinador oficial</span><br><b>${SPON.main}</b> <span class="muted small">· exemple</span></span><span class="chip">Lliga 1</span></div>`}
+  `}
 
 /* ---------- Calendari ---------- */
 const segs=(key,items)=>`<div class="seg" role="tablist">${items.map(([k,l])=>`<button role="tab" aria-selected="${S[key]===k}" data-a="seg" data-k="${key}" data-v="${k}">${l}</button>`).join('')}</div>`;
@@ -748,7 +747,7 @@ function matchPage(i){const f=FIXT[i],r=rng(i*31+5),[a,c]=f[4].split('–').map(
     <div class="vs"><div>${crest(f[2],!home)}<span class="team ${home?'gold':''}">${f[2]}</span></div><div class="score num">${a}<span class="muted"> – </span>${c}</div><div>${crest(f[3],home)}<span class="team ${home?'':'gold'}">${f[3]}</span></div></div></div>
    <div class="card col"><h2 class="h2">Gols</h2>${ev.length?`<div class="list">${ev.map(([n,m,side])=>`<div class="row" style="${side?'flex-direction:row-reverse;text-align:right':''}"><span class="chip num">${m}'</span><span class="grow"><b style="${n===ME.nom?'color:var(--gold-light)':''}">${n}</b></span></div>`).join('')}</div>`:'<span class="muted small">Partit sense gols.</span>'}</div>
    <div class="card col"><h2 class="h2">Estadístiques</h2>${st.map(([t,x,y,u])=>`<div class="col" style="gap:4px"><div class="small muted" style="text-align:center">${t}</div><div class="duo"><b class="num">${x}${u}</b><div class="bar"><i style="width:${x/(x+y)*100}%"></i><i style="width:${y/(x+y)*100}%"></i></div><b class="num" style="text-align:right">${y}${u}</b></div></div>`).join('')}</div>
-   <div class="card row"><span class="badge">${ini(mvp)}</span><div class="grow"><span class="eyebrow">MVP ${SPON.mvp} del partit</span><br><b>${mvp}</b></div><span class="chip">+40 pts</span></div>
+   <div class="card row"><span class="badge">${ini(mvp)}</span><div class="grow"><span class="eyebrow">MVP del partit</span><br><b>${mvp}</b></div><span class="chip">+40 pts</span></div>
    <button class="btn" data-a="video">▶ Veure el resum a YouTube</button>`}
 function newsPage(){return `<button class="btn sm ghost" data-a="page" data-v="notis">Veure com arriben al mòbil</button><div class="card list">${NEWS.map(n=>{const o=S.open===n.id;return `<button class="news" data-a="news" data-v="${n.id}"><span class="row between"><span class="row" style="gap:8px">${S.read.has(n.id)?'':'<i class="unread"></i>'}<span class="chip ${n.c==='Canvi'?'ember':''}">${esc(n.c)}</span></span><span class="muted small">${n.d}</span></span><b>${esc(n.t)}</b>${o?`<p class="muted small">${esc(n.b)}</p>`:''}</button>`}).join('')}</div><p class="demo">L'organització publica aquí els canvis d'horari, els festius i tot el que passa a la lliga.</p>`}
 function notisPage(){return `<div class="col" style="align-items:center;gap:0;padding-block:18px 6px"><b class="h1 num" style="font-size:64px;font-weight:500">8:02</b><span class="muted">Divendres, 8 d'octubre</span></div>
@@ -767,7 +766,7 @@ function teamPage(){const pos=TEAMS.findIndex(t=>t[0]===ME.equip),t=TEAMS[pos],r
   <div class="card col"><div class="row between"><h2 class="h2">Plantilla</h2><span class="chip">12 jugadors</span></div><div class="list">${roster.map(([n,p,g])=>{const a=st(n);return `<div class="row"><span class="badge sm ${n===ME.nom?'':'dim'}">${p}</span><span class="grow"><b style="${n===ME.nom?'color:var(--gold-light)':''}">${n}${n===ME.nom?' (tu)':''}</b><br><span class="muted small">${g} gols</span></span><span class="chip ${a==='si'?'ok':a==='no'?'bad':''}">${a==='si'?'Ve':a==='no'?'No pot':'Pendent'}</span></div>`}).join('')}</div><span class="muted small">La columna de la dreta és l'assistència al proper partit.</span></div>
   <div class="card col" style="align-items:center"><div class="row between" style="width:100%"><h2 class="h2">Samarreta</h2><span class="chip">${KPAT[S.team.kit.pat]}</span></div>${kit(S.team.kit,{h:236})}${kitCtl()}<button class="btn sm" data-a="page" data-v="editor">Edita nom, escut i samarreta</button></div>
   ${inviteCard()}
-  <div class="card row">${ico('handshake',40)}<span class="grow"><span class="eyebrow">A la samarreta</span><br><b>${SPON.main}</b> <span class="muted small">· patrocinador d'exemple</span></span></div>
+  
   <button class="btn ghost" data-a="page" data-v="xat">Obre el xat de l'equip</button>`}
 function profile(){const p=meP();return `<div class="col" style="align-items:center;text-align:center;gap:6px"><span class="ring" style="--p:${S.punts%300/3}"><span class="badge" style="width:84px;height:84px;font-size:30px">${ini(ME.nom)}</span><i>Nv ${3+(S.punts/300|0)}</i></span><h1 class="h1">${ME.nom}</h1><span class="muted small">${ME.equip} · Dorsal ${ME.dorsal} · ${POSN[S.pos]}</span><span class="chip">${300-S.punts%300} punts per pujar de nivell</span></div>${dorsalCard()}
   <div class="card stats"><div><b class="gold num">${TEAMS.find(t=>t[0]===ME.equip).slice(1,4).reduce((a,b)=>a+b)}</b><span>partits</span></div><div><b class="gold num">${p.g}</b><span>gols</span></div><div><b class="gold num">${p.a}</b><span>assist.</span></div><div><b class="gold num">${mean(form(p)).toFixed(1).replace('.',',')}</b><span>nota</span></div></div>
@@ -811,7 +810,7 @@ function publishActa(){
   ['pichichi','ratxa'].forEach(id=>{const m=M_MES.find(x=>x.id===id);if(S.prog[id]>=m.max&&!S.done.has(id)){S.done.add(id);S.punts+=m.p;won+=m.p}});
   const rows=mine().map(p=>[p.id,(g[p.id]||0)*5+((p.team===f[2]||p.team===f[3])?3:1+(r()*5|0))+(mvp===p.n?4:0)]);
   S.jres={jn:f[0],rows,before,after:frankPos(),sim:true};
-  const id=Date.now();NEWS.unshift({id,c:'Lliga',d:'Ara mateix',t:`Final: ${f[2]} ${a} – ${c} ${f[3]}`,b:`MVP ${SPON.mvp} del partit: ${mvp}. La classificació, el Fantasy i les missions ja estan actualitzats.`});
+  const id=Date.now();NEWS.unshift({id,c:'Lliga',d:'Ara mateix',t:`Final: ${f[2]} ${a} – ${c} ${f[3]}`,b:`MVP del partit: ${mvp}. La classificació, el Fantasy i les missions ja estan actualitzats.`});
   NOTIS.unshift([`Final: ${f[2]} ${a} – ${c} ${f[3]}`,`MVP: ${mvp}. Mira la fitxa del partit i els teus punts.`,'ara',{page:{name:'partit',arg:i}}]);
   S.org={g:{},mvp:null};S.att.m=null;S.day++;S.val={};M_JOR.forEach(m=>S.done.delete(m.id));
   S.last={t:`${f[2]} ${a} – ${c} ${f[3]}`,items:[['Fitxa del partit','Veure',{page:{name:'partit',arg:i}}],['Classificació actualitzada','Veure',{page:null,tab:'ranquing',rank:'lliga'}],['Punts del Fantasy de la jornada','Veure',{page:{name:'jornada',arg:''}}],['Preus del mercat','Veure',{page:null,tab:'fantasy',fan:'mercat'}],[won?`Missions validades: +${won} punts`:'Missions','Veure',{page:null,tab:'missions',mis:'jornada'}],['Novetat enviada als jugadors','Veure',{page:{name:'novetats',arg:''}}]]};
