@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONCORDIA · Presentació</title>
+<style>
+@font-face{font-family:Cinzel;font-weight:600;src:url(cinzel-600.woff2) format('woff2')}
+@font-face{font-family:Cinzel;font-weight:700;src:url(cinzel-700.woff2) format('woff2')}
+@font-face{font-family:Oswald;font-weight:400;src:url(oswald-400.woff2) format('woff2')}
+@font-face{font-family:Oswald;font-weight:500;src:url(oswald-500.woff2) format('woff2')}
+@font-face{font-family:Oswald;font-weight:600;src:url(oswald-600.woff2) format('woff2')}
+@font-face{font-family:Oswald;font-weight:700;src:url(oswald-700.woff2) format('woff2')}
+@font-face{font-family:Figtree;font-weight:400;src:url(figtree-400.woff2) format('woff2')}
+@font-face{font-family:Figtree;font-weight:500;src:url(figtree-500.woff2) format('woff2')}
+@font-face{font-family:Figtree;font-weight:600;src:url(figtree-600.woff2) format('woff2')}
+@font-face{font-family:Figtree;font-weight:700;src:url(figtree-700.woff2) format('woff2')}
+
+:root{
+  --bg:#050403;--ink:#f1e8d4;--mut:#a99a7f;--bronze:#8c5a28;--gold:#c8933a;--pale:#f2d78e;--cream:#fff1c9;
+  --line:rgba(200,147,58,.28);--card:rgba(24,17,9,.72);
+  --e:cubic-bezier(.16,1,.3,1);--eo:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:Figtree,'Segoe UI',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+body.idle{cursor:none}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0;background:var(--bg);overflow:hidden}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#bgA{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(1200px 700px at 50% -10%,rgba(200,147,58,.20),transparent 70%),
+    radial-gradient(900px 600px at 100% 110%,rgba(140,90,40,.20),transparent 70%),
+    radial-gradient(900px 600px at 0% 110%,rgba(140,90,40,.14),transparent 70%)}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.72) 100%)}
+#pitch{position:absolute;inset:0;width:100%;height:100%;opacity:.07;pointer-events:none}
+
+/* ---------- Diapositives ---------- */
+.s{position:absolute;inset:0;padding:120px 130px 110px;opacity:0;visibility:hidden;transition:opacity .45s var(--eo),visibility 0s .45s;display:flex;flex-direction:column}
+.s.on{opacity:1;visibility:visible;transition:opacity .6s var(--eo) .12s}
+.s.c{align-items:center;justify-content:center;text-align:center}
+
+.a{opacity:0}
+.s.on .a{animation:up .9s var(--e) both;animation-delay:var(--d,0s)}
+.s.on .a.l{animation-name:left}
+.s.on .a.r{animation-name:right}
+.s.on .a.z{animation-name:zoom}
+.s.on .a.w{animation-name:wipe;animation-duration:1.1s}
+.s.on .a.fd{animation-name:fade}
+@keyframes up{from{opacity:0;transform:translateY(46px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes left{from{opacity:0;transform:translateX(-70px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes right{from{opacity:0;transform:translateX(70px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes zoom{from{opacity:0;transform:scale(.82);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes wipe{from{opacity:1;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.f{opacity:0;transform:translateY(34px);filter:blur(6px);transition:opacity .7s var(--e),transform .7s var(--e),filter .7s var(--e)}
+.f.show{opacity:1;transform:none;filter:none}
+
+/* ---------- Tipografia ---------- */
+.gold{background:linear-gradient(180deg,#fff1c9 0%,#f2d78e 34%,#c8933a 72%,#8c5a28 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kick{font-family:Cinzel,serif;font-weight:600;font-size:26px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:22px}
+.kick::before{content:"";width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--gold))}
+.s.c .kick::after{content:"";width:64px;height:2px;background:linear-gradient(270deg,transparent,var(--gold))}
+h1{font-family:Oswald,sans-serif;font-weight:600;font-size:112px;line-height:1.02;letter-spacing:.01em;text-transform:uppercase;margin-top:22px}
+h2{font-family:Oswald,sans-serif;font-weight:600;font-size:88px;line-height:1.04;text-transform:uppercase;margin-top:20px}
+.lead{font-size:38px;line-height:1.38;color:#d9cdb4;max-width:1300px;margin-top:26px}
+.lead b,.t b{color:var(--pale);font-weight:600}
+.t{font-size:31px;line-height:1.4;color:#cfc3aa}
+.os{font-family:Oswald,sans-serif;text-transform:uppercase}
+.num{font-family:Oswald,sans-serif;font-weight:700;line-height:.95;font-variant-numeric:tabular-nums}
+
+.ico{display:inline-block;flex:none;width:var(--s,96px);aspect-ratio:1;background:url(icones.webp) calc(var(--c)*100%/7) calc(var(--r)*100%/5)/800% 600% no-repeat;filter:drop-shadow(0 6px 18px rgba(200,147,58,.35))}
+.card{background:linear-gradient(180deg,rgba(40,28,14,.78),rgba(14,10,6,.82));border:1px solid var(--line);border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,241,201,.10);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--cream),var(--gold),transparent);opacity:.85}
+.grid{display:grid;gap:34px;margin-top:56px}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:14px 28px;border:1px solid var(--line);border-radius:999px;background:rgba(200,147,58,.08);font-family:Oswald,sans-serif;font-size:30px;letter-spacing:.06em;text-transform:uppercase;color:var(--pale)}
+
+/* ---------- Marc superior i inferior ---------- */
+#hud{position:absolute;left:0;right:0;top:0;height:96px;padding:0 60px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;transition:opacity .5s}
+#hud .b{display:flex;align-items:center;gap:16px;font-family:Cinzel,serif;font-weight:700;font-size:22px;letter-spacing:.38em;color:var(--gold)}
+#hud .b img{height:44px}
+#hud .n{font-family:Oswald,sans-serif;font-size:24px;letter-spacing:.2em;color:var(--mut)}
+#hud .n b{color:var(--pale);font-weight:500}
+#bar{position:absolute;left:0;bottom:0;height:5px;width:0;background:linear-gradient(90deg,var(--bronze),var(--gold),var(--cream));box-shadow:0 0 22px rgba(242,215,142,.7);transition:width .7s var(--e)}
+#nav{position:absolute;right:26px;bottom:22px;display:flex;gap:10px;opacity:.0;transition:opacity .3s}
+#stage:hover #nav{opacity:.55}
+body.idle #nav{opacity:0!important}
+#nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(10,7,4,.8);color:var(--pale);font-size:22px;cursor:pointer}
+#nav button:hover{background:var(--gold);color:#140c04}
+#sweep{position:absolute;top:-20%;bottom:-20%;left:0;width:520px;transform:translateX(-700px) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,241,201,.16),rgba(242,215,142,.34),rgba(255,241,201,.16),transparent);pointer-events:none;mix-blend-mode:screen}
+#sweep.go{animation:sweep .95s var(--eo)}
+@keyframes sweep{from{transform:translateX(-700px) skewX(-18deg)}to{transform:translateX(2300px) skewX(-18deg)}}
+.cover-mode #hud{opacity:0}
+
+/* ---------- 1 · Obertura ---------- */
+#s0{padding:0;align-items:center;justify-content:center;background:#000}
+#s0 .x{position:absolute;left:0;right:0;text-align:center;opacity:0}
+#start{top:50%;transform:translateY(-50%);font-family:Cinzel,serif;font-size:28px;letter-spacing:.4em;color:#6d5a3a;opacity:1!important;transition:opacity .5s;animation:pulse 2.4s ease-in-out infinite}
+#start small{display:block;margin-top:22px;font-family:Figtree;font-size:20px;letter-spacing:.12em;color:#4a3d28}
+@keyframes pulse{50%{color:#c8933a}}
+#s0.run #start,#s0.done #start{opacity:0!important;animation:none}
+#iline{top:455px;font-family:Cinzel,serif;font-weight:600;font-size:52px;letter-spacing:.08em;color:#d9cdb4;transition:opacity 1.2s}
+#iline.v{opacity:1}
+.slam{top:400px;font-family:Oswald,sans-serif;font-weight:700;font-size:230px;letter-spacing:.02em;line-height:1;text-transform:uppercase}
+.slam span{display:inline-block;position:relative}
+.slam span::after{content:"";position:absolute;left:-3%;right:-3%;top:52%;height:14px;background:linear-gradient(90deg,transparent,#c8933a,#fff1c9,#c8933a,transparent);transform:scaleX(0);transform-origin:left;box-shadow:0 0 30px rgba(242,215,142,.8)}
+.slam.v{animation:slam 1.25s var(--e) both}
+.slam.v span::after{animation:strike .45s var(--eo) .32s both}
+@keyframes slam{0%{opacity:0;transform:scale(2.4);filter:blur(24px)}16%{opacity:1;transform:scale(1);filter:none}20%{transform:scale(1) translate(7px,-5px)}24%{transform:translate(-6px,4px)}28%{transform:none}82%{opacity:1}100%{opacity:0;transform:scale(.97)}}
+@keyframes strike{to{transform:scaleX(1)}}
+#fins{top:486px;font-family:Cinzel,serif;font-weight:600;font-size:60px;letter-spacing:.3em;color:var(--pale);transition:opacity .5s}
+#fins.v{opacity:1}
+#glow{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px;border-radius:50%;background:radial-gradient(circle,#fff1c9,#f2d78e 30%,rgba(200,147,58,.5) 55%,transparent 72%);opacity:0;transform:scale(0)}
+#glow.v{animation:grow 2.6s cubic-bezier(.6,0,.9,.4) both}
+@keyframes grow{0%{opacity:0;transform:scale(0)}25%{opacity:.7}100%{opacity:1;transform:scale(14)}}
+#flash{position:absolute;inset:0;background:#fff6dc;opacity:0;pointer-events:none}
+#flash.v{animation:flash 1.3s ease-out both}
+@keyframes flash{0%{opacity:1}100%{opacity:0}}
+#cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+#s0.done #cover{opacity:1}
+#cover .rays{position:absolute;left:50%;top:44%;width:1700px;height:1700px;margin:-850px;background:repeating-conic-gradient(from 0deg,rgba(242,215,142,.10) 0 4deg,transparent 4deg 14deg);-webkit-mask:radial-gradient(circle,#000 0,transparent 62%);mask:radial-gradient(circle,#000 0,transparent 62%);animation:spin 90s linear infinite;opacity:0;transition:opacity 2s .3s}
+#s0.done #cover .rays{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+#cover .em{height:400px;filter:drop-shadow(0 0 70px rgba(200,147,58,.65));opacity:0;transform:scale(1.5)}
+#cover .wm{height:122px;margin-top:10px;opacity:0;transform:translateY(30px)}
+#cover .lm{margin-top:34px;font-family:Cinzel,serif;font-weight:600;font-size:34px;letter-spacing:.12em;color:var(--pale);opacity:0}
+#cover .rule{width:0;height:2px;margin-top:38px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+#cover .who{margin-top:30px;display:flex;gap:60px;font-family:Oswald,sans-serif;font-size:32px;letter-spacing:.2em;text-transform:uppercase;color:#d9cdb4;opacity:0}
+#cover .who i{color:var(--gold);font-style:normal}
+#cover .pl{margin-top:20px;font-size:24px;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);opacity:0}
+#s0.done #cover .em{animation:emIn 1.6s var(--e) both}
+#s0.done #cover .wm{animation:up 1.1s var(--e) .7s both}
+#s0.done #cover .lm{animation:fade 1.4s ease 1.7s both}
+#s0.done #cover .rule{animation:rule 1.2s var(--e) 2.3s both}
+#s0.done #cover .who{animation:up 1s var(--e) 2.7s both}
+#s0.done #cover .pl{animation:fade 1.2s ease 3.2s both}
+#s0.done.still #cover *{animation-duration:.01s!important;animation-delay:0s!important}
+@keyframes emIn{from{opacity:0;transform:scale(1.5);filter:blur(18px) brightness(3)}to{opacity:1;transform:none;filter:drop-shadow(0 0 70px rgba(200,147,58,.65))}}
+@keyframes rule{to{width:620px}}
+
+/* ---------- 2 · Problema ---------- */
+.pb{padding:46px 44px 50px;display:flex;flex-direction:column;gap:20px}
+.pb .k{font-family:Oswald;font-weight:700;font-size:80px;color:rgba(200,147,58,.26);position:absolute;right:34px;top:14px}
+.pb h3{font-family:Oswald;font-weight:600;font-size:48px;line-height:1.08;text-transform:uppercase;color:var(--cream)}
+
+/* ---------- 3 · Solució ---------- */
+.inc{display:grid;grid-template-columns:repeat(7,1fr);gap:22px;margin-top:64px;width:100%}
+.inc div{display:flex;flex-direction:column;align-items:center;gap:18px;padding:34px 12px 30px;text-align:center}
+.inc span{font-family:Oswald;font-size:29px;line-height:1.15;letter-spacing:.04em;text-transform:uppercase;color:var(--pale)}
+
+/* ---------- 4 · Com funciona ---------- */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:90px;position:relative}
+.steps::before{content:"";position:absolute;left:8%;right:8%;top:62px;height:3px;background:linear-gradient(90deg,var(--bronze),var(--gold),var(--cream));transform:scaleX(0);transform-origin:left;box-shadow:0 0 18px rgba(242,215,142,.5)}
+.s.on .steps::before{animation:strike 2.2s var(--eo) .5s both}
+.st{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative}
+.st .o{width:126px;height:126px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#3a2811,#120c06);border:2px solid var(--gold);box-shadow:0 0 0 10px var(--bg),0 0 40px rgba(200,147,58,.35)}
+.st .q{margin-top:26px;font-family:Oswald;font-weight:700;font-size:26px;letter-spacing:.3em;color:var(--gold)}
+.st h4{margin-top:8px;font-family:Oswald;font-weight:600;font-size:36px;line-height:1.1;text-transform:uppercase;color:var(--cream)}
+.st p{margin-top:12px;font-size:25px;line-height:1.34;color:#bfb298}
+
+/* ---------- 5 · Equip a mida ---------- */
+.match{display:grid;grid-template-columns:1fr 240px 560px;align-items:center;gap:20px;margin-top:20px;padding-bottom:200px;flex:1}
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.qs .pill{justify-content:flex-start;font-size:31px;padding:20px 30px;border-radius:20px}
+.flow{height:300px;position:relative}
+.flow svg{width:100%;height:100%;overflow:visible}
+.flow path{fill:none;stroke:url(#gl);stroke-width:4;stroke-linecap:round;stroke-dasharray:8 16;animation:dash 1.1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-48}}
+.mc{padding:44px 46px;text-align:center}
+.mc .ring{width:250px;height:250px;margin:14px auto 20px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p,0)*1%),rgba(200,147,58,.14) 0);position:relative}
+.mc .ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:#140d06}
+.mc .ring .num{position:relative;font-size:92px}
+@property --p{syntax:'<number>';inherits:true;initial-value:0}
+.s.on .mc .ring{animation:ring 1.8s var(--eo) 1.2s both}
+@keyframes ring{from{--p:0}to{--p:94}}
+.cori{position:absolute;display:flex;align-items:flex-end;gap:6px;pointer-events:none}
+.cori img{height:var(--h,250px);filter:drop-shadow(0 20px 30px rgba(0,0,0,.6))}
+.s.on .cori img{animation:coriIn 1s var(--e) var(--d,1.4s) both,bob 3.4s ease-in-out 2.6s infinite}
+@keyframes coriIn{from{opacity:0;transform:translateY(120px) rotate(-14deg)}to{opacity:1;transform:none}}
+@keyframes bob{50%{transform:translateY(-12px) rotate(2deg)}}
+.bub{background:#fff6dc;color:#1a1107;font-weight:600;font-size:28px;line-height:1.25;padding:20px 28px;border-radius:26px 26px 26px 6px;max-width:380px;margin-bottom:150px;box-shadow:0 20px 50px rgba(0,0,0,.5);text-align:left}
+.s.on .bub{animation:zoom .7s var(--e) calc(var(--d,1.4s) + .7s) both;transform-origin:left bottom}
+.cori.rv{flex-direction:row-reverse}.cori.rv .bub{border-radius:26px 26px 6px 26px}
+
+/* ---------- Vídeo ---------- */
+.vid{padding:104px 0 0;align-items:center}
+.vwrap{position:relative;width:1560px;height:877.5px;margin-top:26px;border-radius:22px;padding:3px;background:linear-gradient(135deg,var(--bronze),var(--cream),var(--gold),var(--bronze));box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 90px rgba(200,147,58,.22)}
+.vwrap video{width:100%;height:100%;border-radius:20px;background:#000;display:block;object-fit:cover}
+.vplay{position:absolute;inset:3px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:rgba(3,2,2,.62);backdrop-filter:blur(3px);transition:opacity .5s;cursor:pointer}
+.vplay.h{opacity:0;pointer-events:none}
+.vplay .pb2{width:150px;height:150px;border-radius:50%;border:3px solid var(--pale);display:grid;place-items:center;box-shadow:0 0 60px rgba(242,215,142,.5);animation:beat 2s ease-in-out infinite}
+.vplay .pb2::after{content:"";border-left:46px solid var(--pale);border-top:28px solid transparent;border-bottom:28px solid transparent;margin-left:12px}
+@keyframes beat{50%{transform:scale(1.07);box-shadow:0 0 90px rgba(242,215,142,.8)}}
+.vplay span{font-family:Oswald;font-size:28px;letter-spacing:.3em;text-transform:uppercase;color:var(--pale)}
+.vid .kick{font-size:24px}
+
+/* ---------- 7 · Embut ---------- */
+.fun{display:flex;align-items:flex-end;justify-content:space-between;margin-top:70px;width:100%}
+.fn{flex:1;text-align:center;position:relative}
+.fn .num{font-size:calc(120px + var(--k)*18px)}
+.fn h4{font-family:Oswald;font-weight:600;font-size:34px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream);margin-top:14px}
+.fn p{font-size:24px;color:var(--mut);margin-top:6px}
+.fn+.fn::before{content:"";position:absolute;left:-22px;bottom:150px;width:40px;height:40px;border-top:4px solid var(--gold);border-right:4px solid var(--gold);transform:rotate(45deg);opacity:.75}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:64px;width:100%}
+.zones div{padding:26px 30px;border-radius:20px;border:1px solid var(--line);text-align:left;display:flex;gap:22px;align-items:center}
+.zones b{font-family:Oswald;font-weight:700;font-size:46px;white-space:nowrap}
+.zones span{font-size:26px;line-height:1.3;color:#cfc3aa}
+.zones .z1{background:linear-gradient(90deg,rgba(200,147,58,.30),rgba(200,147,58,.06))}.zones .z1 b{color:var(--cream)}
+.zones .z2{background:rgba(140,90,40,.16)}.zones .z2 b{color:var(--gold)}
+.zones .z3{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1)}.zones .z3 b{color:#8a8078}
+
+/* ---------- 8 · Calendari ---------- */
+.tl{margin-top:70px;position:relative}
+.tl .mo{display:grid;grid-template-columns:repeat(12,1fr);font-family:Oswald;font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.tl .mo span{padding:0 0 14px 10px;border-left:1px solid rgba(200,147,58,.22)}
+.tl .tr{position:relative;height:124px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:repeating-linear-gradient(90deg,rgba(200,147,58,.05) 0 calc(100%/12 - 1px),rgba(200,147,58,.18) calc(100%/12 - 1px) calc(100%/12))}
+.tl .lg{position:absolute;top:18px;bottom:18px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-family:Oswald;font-weight:600;font-size:38px;letter-spacing:.08em;text-transform:uppercase;color:#1a1107;background:linear-gradient(90deg,#c8933a,#f2d78e 50%,#fff1c9);box-shadow:0 10px 40px rgba(200,147,58,.4);white-space:nowrap;overflow:hidden}
+.tl .lg small{font-family:Figtree;font-weight:700;font-size:22px;letter-spacing:.02em;text-transform:none}
+.tl .brk{position:absolute;top:100%;margin-top:14px;transform:translateX(-50%);font-size:22px;color:var(--mut);white-space:nowrap;text-align:center}
+.tl .brk::before{content:"";display:block;width:2px;height:16px;background:var(--gold);margin:0 auto 6px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:120px}
+.fact{padding:34px 34px 36px}
+.fact .num{font-size:92px}
+.fact p{font-size:26px;line-height:1.3;color:#cfc3aa;margin-top:8px}
+
+/* ---------- 10 · App ---------- */
+.appg{display:grid;grid-template-columns:470px 1fr;gap:90px;align-items:center;flex:1;margin-top:10px}
+.phone{width:438px;height:892px;border-radius:62px;padding:12px;background:linear-gradient(145deg,#6b4a22,#1c130a 30%,#0a0704 70%,#8c5a28);box-shadow:0 50px 120px rgba(0,0,0,.8),0 0 100px rgba(200,147,58,.25),inset 0 0 0 2px rgba(255,241,201,.18);position:relative}
+.phone iframe{width:414px;height:868px;border:0;border-radius:50px;background:#000;display:block}
+.phone::after{content:"";position:absolute;left:50%;top:22px;width:110px;height:26px;margin-left:-55px;border-radius:20px;background:#000;pointer-events:none}
+.fl{display:grid;grid-template-columns:1fr 1fr;gap:22px 30px;margin-top:44px}
+.fl div{display:flex;align-items:center;gap:22px;padding:20px 26px;border-radius:20px;border:1px solid var(--line);background:rgba(200,147,58,.06)}
+.fl h4{font-family:Oswald;font-weight:600;font-size:32px;text-transform:uppercase;color:var(--cream);line-height:1.1}
+.fl p{font-size:23px;line-height:1.3;color:#bfb298;margin-top:4px}
+
+/* ---------- 11 · QR ---------- */
+.qrg{display:grid;grid-template-columns:620px 1fr;gap:110px;align-items:center;flex:1;padding-bottom:150px}
+.qr{width:620px;height:620px;border-radius:40px;padding:26px;background:#fff8e6;box-shadow:0 0 0 3px var(--gold),0 0 140px rgba(242,215,142,.45),0 50px 120px rgba(0,0,0,.8);position:relative}
+.qr img{width:100%;height:100%;display:block}
+.qr::after{content:"";position:absolute;left:26px;right:26px;top:26px;height:8px;border-radius:8px;background:linear-gradient(90deg,transparent,#c8933a,transparent);box-shadow:0 0 30px 8px rgba(200,147,58,.6);animation:scan 2.8s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateY(0)}50%{transform:translateY(560px)}}
+.url{font-family:Oswald;font-size:30px;letter-spacing:.06em;color:var(--pale);margin-top:34px;padding:16px 26px;border:1px dashed var(--line);border-radius:14px;display:inline-block}
+
+/* ---------- 12 · Mercat ---------- */
+.mk{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:56px}
+.big{padding:44px 50px}
+.big .num{font-size:150px}
+.big p{font-size:30px;color:#cfc3aa;margin-top:6px}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+.tg div{padding:30px 32px;display:flex;gap:24px;align-items:center}
+.tg h4{font-family:Oswald;font-weight:600;font-size:38px;text-transform:uppercase;color:var(--cream);line-height:1.08}
+.tg p{font-size:24px;color:#bfb298;line-height:1.3;margin-top:6px}
+
+/* ---------- 13 · Competència ---------- */
+.cp{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:56px;transition:opacity .8s,filter .8s,transform .8s var(--e)}
+.cp>div{padding:24px 22px 24px;text-align:center}
+.cp h4{font-family:Oswald;font-weight:600;font-size:36px;text-transform:uppercase;color:#e7dcc4;line-height:1.1;min-height:80px;display:grid;place-items:center}
+.cp .zn{margin-top:10px;font-size:24px;line-height:1.3;color:var(--mut)}
+.cp .zn b{display:block;font-family:Oswald;font-weight:500;font-size:20px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);margin-bottom:6px}
+.cp .md{margin-top:10px;font-size:22px;color:#8f836c}
+.s.dim .cp{opacity:.32;filter:grayscale(1) blur(1px);transform:scale(.97)}
+.us{margin-top:30px;padding:30px 50px;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;border-color:var(--gold);box-shadow:0 0 90px rgba(200,147,58,.3),0 30px 80px rgba(0,0,0,.6)}
+.us h3{font-family:Oswald;font-weight:700;font-size:56px;line-height:1.04;text-transform:uppercase}
+.us ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 40px}
+.us li{font-size:28px;color:#e2d6bd;display:flex;gap:14px;align-items:center}
+.us li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold);flex:none}
+
+/* ---------- 14 · Màrqueting ---------- */
+.ch{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
+.ch div{padding:38px 32px 40px}
+.ch h4{font-family:Oswald;font-weight:600;font-size:40px;text-transform:uppercase;color:var(--cream);margin-top:20px;line-height:1.08}
+.ch p{font-size:25px;line-height:1.34;color:#bfb298;margin-top:12px}
+.sp{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sp div{padding:30px 36px;display:flex;gap:26px;align-items:center}
+.sp h4{font-family:Oswald;font-weight:600;font-size:36px;text-transform:uppercase;color:var(--pale)}
+.sp p{font-size:25px;color:#bfb298;margin-top:4px}
+
+/* ---------- 15 · Preus ---------- */
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:50px;flex:1}
+.plan{padding:46px 54px 48px;display:flex;flex-direction:column}
+.plan h3{font-family:Cinzel;font-weight:700;font-size:38px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.plan .p{display:flex;align-items:baseline;gap:18px;margin-top:10px}
+.plan .p .num{font-size:136px;white-space:nowrap}
+.plan .p small{font-size:28px;color:var(--mut)}
+.plan ul{list-style:none;margin-top:22px;display:grid;gap:13px}
+.plan li{font-size:28px;color:#ded2b9;display:flex;gap:16px;align-items:center}
+.plan li::before{content:"";width:26px;height:14px;border-left:4px solid var(--gold);border-bottom:4px solid var(--gold);transform:rotate(-45deg) translateY(-6px);flex:none}
+.plan.top{border-color:var(--gold);background:linear-gradient(180deg,rgba(90,60,22,.72),rgba(20,13,6,.88));box-shadow:0 0 100px rgba(200,147,58,.28),0 30px 80px rgba(0,0,0,.6)}
+.plan .tag{position:absolute;right:30px;top:30px;padding:10px 20px;border-radius:999px;background:linear-gradient(90deg,#c8933a,#fff1c9);color:#1a1107;font-family:Oswald;font-weight:600;font-size:22px;letter-spacing:.14em;text-transform:uppercase}
+.plan li.x{color:var(--cream);font-weight:600}
+
+/* ---------- 16 · Números ---------- */
+.fin{margin-top:50px;display:grid;gap:30px}
+.br{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:30px}
+.br .lb{font-family:Oswald;font-weight:500;font-size:38px;letter-spacing:.08em;text-transform:uppercase;color:#d9cdb4}
+.br .tk{height:112px;border-radius:18px;background:rgba(200,147,58,.07);border:1px solid var(--line);position:relative;overflow:hidden}
+.br .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:16px;display:flex;align-items:center;justify-content:flex-end;padding-right:30px;white-space:nowrap}
+.br .fill .num{font-size:66px}
+.br.in .fill{background:linear-gradient(90deg,#8c5a28,#c8933a 55%,#fff1c9);color:#1a1107;box-shadow:0 0 50px rgba(200,147,58,.45)}
+.br.ex .fill{background:linear-gradient(90deg,#3d2a14,#6e4a22);color:var(--cream)}
+.s.on .br.in .fill{animation:barA 1.8s var(--e) .7s both}
+.s.on .br.ex .fill{animation:barB 1.6s var(--e) 1.2s both}
+@keyframes barA{to{width:100%}}
+@keyframes barB{to{width:36.8%}}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:44px}
+.kp>div{padding:30px 32px 32px}
+.kp .num{font-size:76px;white-space:nowrap}
+.kp p{font-size:24px;line-height:1.3;color:#bfb298;margin-top:6px}
+
+/* ---------- 17 · Equip ---------- */
+.tm{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+.tm>div{padding:46px 44px 46px;text-align:center}
+.tm .av{width:150px;height:150px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#4a3214,#120c06);border:2px solid var(--gold);box-shadow:0 0 50px rgba(200,147,58,.35)}
+.tm h3{font-family:Oswald;font-weight:600;font-size:52px;text-transform:uppercase;color:var(--cream);margin-top:26px}
+.tm .ro{font-family:Cinzel;font-weight:700;font-size:24px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.tm p{font-size:26px;line-height:1.36;color:#cfc3aa;margin-top:18px}
+.tm .sh{margin-top:22px;font-family:Oswald;font-size:26px;letter-spacing:.14em;color:var(--pale)}
+
+/* ---------- 18 · Futur ---------- */
+.fu{display:grid;grid-template-columns:660px 1fr;gap:70px;margin-top:50px;align-items:center;flex:1}
+.vis{padding:50px 50px 54px;text-align:center}
+.vis .num{font-size:230px}
+.vis p{font-size:32px;line-height:1.3;color:#d9cdb4}
+.rd{display:grid;gap:18px}
+.rd div{display:flex;align-items:center;gap:26px;padding:20px 30px;border-radius:20px;border:1px solid var(--line);background:rgba(200,147,58,.06)}
+.rd h4{font-family:Oswald;font-weight:500;font-size:36px;letter-spacing:.03em;text-transform:uppercase;color:var(--cream)}
+
+/* ---------- 19 · Tancament ---------- */
+#end h1{font-size:150px;margin-top:30px}
+#end .em{height:230px;filter:drop-shadow(0 0 60px rgba(200,147,58,.6))}
+</style>
+</head>
+<body>
+<div id="stage" class="cover-mode">
+  <div id="bgA"></div>
+  <svg id="pitch" viewBox="0 0 1920 1080" fill="none" stroke="#f2d78e" stroke-width="3"><rect x="60" y="60" width="1800" height="960"/><line x1="960" y1="60" x2="960" y2="1020"/><circle cx="960" cy="540" r="170"/><rect x="60" y="300" width="250" height="480"/><rect x="1610" y="300" width="250" height="480"/></svg>
+  <canvas id="fx" width="1920" height="1080"></canvas>
+  <div id="vig"></div>
+
+  <!-- 1 · OBERTURA + PORTADA -->
+  <section class="s" id="s0" data-name="Portada">
+    <div class="x" id="start">Prem ESPAI per començar<small>F · pantalla completa &nbsp;&nbsp; → · avançar &nbsp;&nbsp; ← · tornar &nbsp;&nbsp; M · silenci</small></div>
+    <div class="x" id="iline">Al Penedès, hi ha qui només vol jugar a futbol.</div>
+    <div class="x slam gold" id="sl1"><span>Sense equip.</span></div>
+    <div class="x slam gold" id="sl2"><span>Sense partit.</span></div>
+    <div class="x slam gold" id="sl3" style="font-size:190px;top:420px"><span>Sense competició.</span></div>
+    <div class="x" id="fins">Fins ara.</div>
+    <div id="glow"></div>
+    <div id="cover">
+      <div class="rays"></div>
+      <img class="em" src="emblema.png" alt="">
+      <img class="wm" src="wordmark.png" alt="CONCORDIA">
+      <div class="lm">Juga a futbol quan vulguis, amb qui vulguis, com un professional.</div>
+      <div class="rule"></div>
+      <div class="who"><span>Alejandro Romero</span><i>·</i><span>Amine Isslal</span><i>·</i><span>Arnau Piñol</span></div>
+      <div class="pl">Pla d’empresa · Vilafranca del Penedès · Alt Penedès</div>
+    </div>
+    <div id="flash"></div>
+  </section>
+
+  <!-- 2 · PROBLEMA -->
+  <section class="s" data-name="El problema">
+    <div class="kick a">El problema</div>
+    <h1 class="a" style="--d:.12s">Vols jugar a futbol. <span class="gold">Però…</span></h1>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card pb f"><span class="k">01</span><i class="ico" style="--c:3;--r:0;--s:110px"></i><h3>No tens equip</h3><p class="t">Les competicions demanen inscriure un <b>equip sencer</b>. Si estàs sol, ets nou al poble o has perdut la colla, no tens on jugar.</p></div>
+      <div class="card pb f"><span class="k">02</span><i class="ico" style="--c:4;--r:0;--s:110px"></i><h3>No hi ha competició estable</h3><p class="t">Fora dels clubs federats, a la comarca gairebé només hi ha <b>lligues d’estiu</b>. La resta de l’any, partits improvisats.</p></div>
+      <div class="card pb f"><span class="k">03</span><i class="ico" style="--c:7;--r:0;--s:110px"></i><h3>Res s’assembla al futbol de veritat</h3><p class="t">Estadístiques, vídeo, rànquings, Fantasy… El jugador amateur només ho veu <b>per la televisió</b>.</p></div>
+    </div>
+  </section>
+
+  <!-- 3 · SOLUCIÓ -->
+  <section class="s c" data-name="La solució">
+    <div class="kick a">La solució</div>
+    <h1 class="a z" style="--d:.15s;font-size:150px">Una sola quota.<br><span class="gold">Tot inclòs.</span></h1>
+    <p class="lead a" style="--d:.5s">Una lliga de <b>futbol 7 amateur per a adults</b> a Vilafranca del Penedès i Sant Cugat Sesgarrigues, gestionada des d’una app.</p>
+    <div class="inc">
+      <div class="card a" style="--d:.8s"><i class="ico" style="--c:5;--r:5"></i><span>Camp de gespa</span></div>
+      <div class="card a" style="--d:.9s"><i class="ico" style="--c:5;--r:0"></i><span>Àrbitre federat</span></div>
+      <div class="card a" style="--d:1s"><i class="ico" style="--c:7;--r:1"></i><span>Assegurança</span></div>
+      <div class="card a" style="--d:1.1s"><i class="ico" style="--c:0;--r:1"></i><span>Samarreta</span></div>
+      <div class="card a" style="--d:1.2s"><i class="ico" style="--c:4;--r:4"></i><span>Partits gravats</span></div>
+      <div class="card a" style="--d:1.3s"><i class="ico" style="--c:7;--r:0"></i><span>L’app</span></div>
+      <div class="card a" style="--d:1.4s"><i class="ico" style="--c:0;--r:0"></i><span>Gala de premis</span></div>
+    </div>
+  </section>
+
+  <!-- 4 · COM FUNCIONA -->
+  <section class="s" data-name="Com funciona">
+    <div class="kick a">Com funciona</div>
+    <h1 class="a" style="--d:.12s">De l’app <span class="gold">al camp</span></h1>
+    <div class="steps">
+      <div class="st a" style="--d:.5s"><div class="o"><i class="ico" style="--c:1;--r:3;--s:74px"></i></div><div class="q">01</div><h4>Crea el perfil</h4><p>Descarregues l’app i dius el teu nivell.</p></div>
+      <div class="st a" style="--d:.8s"><div class="o"><i class="ico" style="--c:3;--r:0;--s:74px"></i></div><div class="q">02</div><h4>Inscriu-te</h4><p>Amb el teu equip o tot sol.</p></div>
+      <div class="st a" style="--d:1.1s"><div class="o"><i class="ico" style="--c:5;--r:2;--s:74px"></i></div><div class="q">03</div><h4>Paga la quota</h4><p>Des de l’app, i ja està tot inclòs.</p></div>
+      <div class="st a" style="--d:1.4s"><div class="o"><i class="ico" style="--c:1;--r:0;--s:74px"></i></div><div class="q">04</div><h4>Juga</h4><p>Un partit cada cap de setmana, amb àrbitre.</p></div>
+      <div class="st a" style="--d:1.7s"><div class="o"><i class="ico" style="--c:6;--r:1;--s:74px"></i></div><div class="q">05</div><h4>Fes missions</h4><p>Reptes a cada jornada, punts i recompenses.</p></div>
+      <div class="st a" style="--d:2s"><div class="o"><i class="ico" style="--c:2;--r:4;--s:74px"></i></div><div class="q">06</div><h4>Puja al rànquing</h4><p>Estadístiques, classificació i Fantasy al dia.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · EQUIP A MIDA -->
+  <section class="s" data-name="Equip a mida">
+    <div class="kick a">El que ens fa diferents</div>
+    <h1 class="a" style="--d:.12s">Véns sol? <span class="gold">Et trobem equip.</span></h1>
+    <div class="match">
+      <div>
+        <p class="t a" style="--d:.4s;margin-bottom:28px;font-size:34px">L’app et fa un qüestionari i t’assigna l’equip que <b>més s’assembla a tu</b>.</p>
+        <div class="qs">
+          <span class="pill a l" style="--d:.55s"><i class="ico" style="--c:6;--r:0;--s:52px"></i>Posició</span>
+          <span class="pill a l" style="--d:.65s"><i class="ico" style="--c:7;--r:0;--s:52px"></i>Nivell</span>
+          <span class="pill a l" style="--d:.75s"><i class="ico" style="--c:1;--r:5;--s:52px"></i>Estil de joc</span>
+          <span class="pill a l" style="--d:.85s"><i class="ico" style="--c:5;--r:4;--s:52px"></i>Compromís</span>
+          <span class="pill a l" style="--d:.95s"><i class="ico" style="--c:0;--r:0;--s:52px"></i>Ambició</span>
+          <span class="pill a l" style="--d:1.05s"><i class="ico" style="--c:7;--r:2;--s:52px"></i>Valors</span>
+        </div>
+      </div>
+      <div class="flow a fd" style="--d:1.1s"><svg viewBox="0 0 240 300"><defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#8c5a28"/><stop offset="1" stop-color="#fff1c9"/></linearGradient></defs><path d="M0 40 C120 40 120 150 240 150"/><path d="M0 150 L240 150"/><path d="M0 260 C120 260 120 150 240 150"/></svg></div>
+      <div class="card mc a z" style="--d:1.2s">
+        <div class="kick" style="justify-content:center;font-size:22px">El teu equip</div>
+        <div class="ring"><span class="num gold"><span data-n="94" data-delay="1200">0</span>%</span></div>
+        <div class="os" style="font-size:44px;font-weight:600;color:var(--cream)">d’afinitat</div>
+        <p class="t" style="font-size:24px;margin-top:8px;color:var(--mut)">Exemple del resultat que veu el jugador</p>
+      </div>
+    </div>
+    <div class="cori" style="left:70px;bottom:20px;--h:210px;--d:1.9s"><img src="cori.webp" alt=""><div class="bub" style="margin-bottom:120px">Sóc en Cori! Aquí no omplim places a l’atzar.</div></div>
+  </section>
+
+  <!-- 6 · VÍDEO FORMAT -->
+  <section class="s vid" data-name="Format de la lliga" data-video>
+    <div class="kick a">El format de la lliga</div>
+    <div class="vwrap a z" style="--d:.2s"><video src="format.mp4" preload="metadata" playsinline></video><div class="vplay"><div class="pb2"></div><span>Prem → per reproduir</span></div></div>
+  </section>
+
+  <!-- 7 · FORMAT RESUM -->
+  <section class="s c" data-name="Format en una imatge">
+    <div class="kick a">De setze a un</div>
+    <h2 class="a" style="--d:.1s">Setze equips. <span class="gold">Un sol campió.</span></h2>
+    <div class="fun">
+      <div class="fn a" style="--d:.4s;--k:0"><div class="num gold">16</div><h4>Lliga regular</h4><p>15 jornades</p></div>
+      <div class="fn a" style="--d:.65s;--k:1"><div class="num gold">12</div><h4>Fase de grups</h4><p>4 grups de 3</p></div>
+      <div class="fn a" style="--d:.9s;--k:2"><div class="num gold">8</div><h4>Quarts</h4><p>Passen 2 per grup</p></div>
+      <div class="fn a" style="--d:1.15s;--k:3"><div class="num gold">4</div><h4>Semifinals</h4><p>Partit únic</p></div>
+      <div class="fn a" style="--d:1.4s;--k:4"><div class="num gold">2</div><h4>Final</h4><p>I gala de premis</p></div>
+      <div class="fn a z" style="--d:1.75s;--k:6"><div class="num gold">1</div><h4>Campió</h4><p>Aixeca la copa</p></div>
+    </div>
+    <div class="zones">
+      <div class="z1 f"><b>1r – 10è</b><span>Directes als playoffs</span></div>
+      <div class="z2 f"><b>11è – 14è</b><span>Promoció a partit únic: 11è–14è i 12è–13è</span></div>
+      <div class="z3 f"><b>15è – 16è</b><span>Eliminats</span></div>
+    </div>
+  </section>
+
+  <!-- 8 · CALENDARI -->
+  <section class="s" data-name="Calendari">
+    <div class="kick a">La temporada 2027-28</div>
+    <h1 class="a" style="--d:.12s">Dues lligues. <span class="gold">Futbol tot l’any.</span></h1>
+    <div class="tl a fd" style="--d:.4s">
+      <div class="mo"><span>Ago</span><span>Set</span><span>Oct</span><span>Nov</span><span>Des</span><span>Gen</span><span>Feb</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span></div>
+      <div class="tr">
+        <div class="lg a w" style="--d:.8s;left:8%;width:39.9%"><span>Lliga 1</span><small>30 d’agost → 23 de gener</small></div>
+        <div class="lg a w" style="--d:1.5s;left:53.8%;width:38.4%"><span>Lliga 2</span><small>14 de febrer → 2 de juliol</small></div>
+        <div class="brk a fd" style="--d:2.1s;left:41%">Aturada<br>de Nadal</div>
+        <div class="brk a fd" style="--d:2.2s;left:50.8%">2 setmanes<br>de descans</div>
+        <div class="brk a fd" style="--d:2.3s;left:70%">Aturada de<br>Setmana Santa</div>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="card fact f"><div class="num gold">19</div><p>setmanes per lliga: 15 de lliga regular, 1 de promoció i 3 de playoffs</p></div>
+      <div class="card fact f"><div class="num gold">2</div><p>entrenaments d’una hora per setmana, entre les 19 i les 23 h</p></div>
+      <div class="card fact f"><div class="num gold">2</div><p>camps: Vilafranca del Penedès i Sant Cugat Sesgarrigues</p></div>
+      <div class="card fact f"><div class="num gold">½</div><p>A meitat de lliga tothom canvia de camp i d’horari</p></div>
+    </div>
+  </section>
+
+  <!-- 9 · VÍDEO CALENDARI -->
+  <section class="s vid" data-name="Vídeo del calendari" data-video>
+    <div class="kick a">El calendari, en 80 segons</div>
+    <div class="vwrap a z" style="--d:.2s"><video src="calendari.mp4" preload="metadata" playsinline></video><div class="vplay"><div class="pb2"></div><span>Prem → per reproduir</span></div></div>
+  </section>
+
+  <!-- 10 · APP -->
+  <section class="s" data-name="L’app" data-app style="padding-top:104px;padding-bottom:60px">
+    <div class="appg">
+      <div class="phone a z" style="--d:.2s"><iframe title="Prototip de l’app" data-src="app.html"></iframe></div>
+      <div>
+        <div class="kick a">L’app · Concordia Data</div>
+        <h1 class="a" style="--d:.12s;font-size:104px">La lliga, <span class="gold">a la butxaca</span></h1>
+        <p class="lead a" style="--d:.3s;font-size:32px;margin-top:18px">Aquest mòbil és el prototip real: <b>es pot tocar</b>.</p>
+        <div class="fl">
+          <div class="f"><i class="ico" style="--c:5;--r:4;--s:70px"></i><span><h4>Calendari i xat</h4><p>Confirmes si vas al partit i parles amb l’equip.</p></span></div>
+          <div class="f"><i class="ico" style="--c:7;--r:0;--s:70px"></i><span><h4>Estadístiques</h4><p>Fitxa de cada partit, classificació i golejadors.</p></span></div>
+          <div class="f"><i class="ico" style="--c:2;--r:1;--s:70px"></i><span><h4>Fantasy</h4><p>Jugadors reals de la lliga, amb un preu que canvia cada dia.</p></span></div>
+          <div class="f"><i class="ico" style="--c:6;--r:1;--s:70px"></i><span><h4>Missions</h4><p>Reptes a cada jornada i cada mes.</p></span></div>
+          <div class="f"><i class="ico" style="--c:5;--r:1;--s:70px"></i><span><h4>Recompenses</h4><p>Samarretes, descomptes i entrades a la gala.</p></span></div>
+          <div class="f"><i class="ico" style="--c:5;--r:0;--s:70px"></i><span><h4>Acta digital</h4><p>L’àrbitre tanca el partit i tot s’actualitza sol.</p></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · QR -->
+  <section class="s" data-name="Prova-la">
+    <div class="qrg">
+      <div class="qr a z" style="--d:.2s"><img src="qr.svg" alt="Codi QR del prototip"></div>
+      <div>
+        <div class="kick a">Ara us toca a vosaltres</div>
+        <h1 class="a" style="--d:.15s;font-size:140px">Traieu <span class="gold">el mòbil.</span></h1>
+        <p class="lead a" style="--d:.4s">Escanegeu el codi i proveu l’app: inscriviu-vos, mireu el calendari, feu el vostre equip de Fantasy.</p>
+        <div class="url a" style="--d:.6s">demoy21.github.io/concordia</div>
+      </div>
+    </div>
+    <div class="cori rv" style="right:90px;bottom:30px;--h:230px;--d:1s"><img src="cori.webp" alt=""><div class="bub" style="margin-bottom:130px">A dins us faig jo la visita guiada!</div></div>
+  </section>
+
+  <!-- 12 · MERCAT -->
+  <section class="s" data-name="Mercat">
+    <div class="kick a">Mercat de venda</div>
+    <h1 class="a" style="--d:.12s">A qui <span class="gold">ens dirigim</span></h1>
+    <div class="mk">
+      <div class="card big a l" style="--d:.35s"><div class="num gold" data-n="41541">0</div><p>habitants a <b style="color:var(--pale)">Vilafranca del Penedès</b>, capital de la comarca</p></div>
+      <div class="card big a r" style="--d:.5s"><div class="num gold" data-n="116098">0</div><p>habitants a l’<b style="color:var(--pale)">Alt Penedès</b></p></div>
+    </div>
+    <div class="tg">
+      <div class="card f"><i class="ico" style="--c:1;--r:5;--s:88px"></i><span><h4>De 18 a 35 anys</h4><p>Joves i adults que juguen per afició.</p></span></div>
+      <div class="card f"><i class="ico" style="--c:3;--r:0;--s:88px"></i><span><h4>Colles i jugadors sols</h4><p>Volen competir sense les exigències del futbol federat.</p></span></div>
+      <div class="card f"><i class="ico" style="--c:7;--r:2;--s:88px"></i><span><h4>Empreses locals</h4><p>Públic secundari: patrocinadors que busquen visibilitat.</p></span></div>
+    </div>
+  </section>
+
+  <!-- 13 · COMPETÈNCIA -->
+  <section class="s" data-name="Competència" data-dim="1">
+    <div class="kick a">Competència</div>
+    <h1 class="a" style="--d:.12s">Qui ho fa <span class="gold">a Catalunya</span></h1>
+    <div class="cp">
+      <div class="card a" style="--d:.4s"><h4>Clic Sports</h4><div class="zn"><b>Zona</b>Barcelona i Maresme</div><div class="md">Futbol 7, 11 i sala</div></div>
+      <div class="card a" style="--d:.5s"><h4>Fundació Valldoor7</h4><div class="zn"><b>Zona</b>Diferents zones de Catalunya</div><div class="md">Futbol 7 i sala</div></div>
+      <div class="card a" style="--d:.6s"><h4>Meiland</h4><div class="zn"><b>Zona</b>Barcelona</div><div class="md">Futbol 7 i sala</div></div>
+      <div class="card a" style="--d:.7s"><h4>La Liga Pava</h4><div class="zn"><b>Zona</b>Castelldefels i Sant Boi</div><div class="md">Futbol 7</div></div>
+      <div class="card a" style="--d:.8s"><h4>Tiki-Taka Fútbol</h4><div class="zn"><b>Zona</b>Barcelona</div><div class="md">Futbol 7 i sala</div></div>
+    </div>
+    <div class="card us f">
+      <h3>Cap està centrada<br><span class="gold">en l’Alt Penedès.</span></h3>
+      <ul><li>Nosaltres juguem a casa</li><li>Equip a mida per a qui ve sol</li><li>App amb Fantasy i missions</li><li>Una quota amb tot inclòs</li></ul>
+    </div>
+  </section>
+
+  <!-- 14 · MÀRQUETING -->
+  <section class="s" data-name="Difusió">
+    <div class="kick a">Difusió i promoció</div>
+    <h1 class="a" style="--d:.12s">Com <span class="gold">omplirem la lliga</span></h1>
+    <div class="ch">
+      <div class="card f"><i class="ico" style="--c:0;--r:2"></i><h4>Xarxes socials</h4><p>TikTok, Instagram i YouTube, on és el nostre públic.</p></div>
+      <div class="card f"><i class="ico" style="--c:4;--r:4"></i><h4>Partits en directe</h4><p>Els partits oficials es poden seguir per YouTube.</p></div>
+      <div class="card f"><i class="ico" style="--c:2;--r:1"></i><h4>Influencers catalans</h4><p>Col·laboracions per arribar als joves de la comarca.</p></div>
+      <div class="card f"><i class="ico" style="--c:1;--r:0"></i><h4>Els mateixos jugadors</h4><p>Publiquen les seves jugades i estadístiques des de l’app.</p></div>
+    </div>
+    <div class="sp f">
+      <div class="card"><i class="ico" style="--c:0;--r:1;--s:84px"></i><span><h4>Patrocini a la samarreta</h4><p>L’espai central de la samarreta de tots els equips.</p></span></div>
+      <div class="card"><i class="ico" style="--c:1;--r:1;--s:84px"></i><span><h4>Premi «MVP + la teva marca»</h4><p>El nom del premi individual de cada jornada.</p></span></div>
+    </div>
+  </section>
+
+  <!-- 15 · PREUS -->
+  <section class="s" data-name="Preus">
+    <div class="kick a">Preu</div>
+    <h1 class="a" style="--d:.12s">Dos plans. <span class="gold">Cap sorpresa.</span></h1>
+    <div class="pr">
+      <div class="card plan a l" style="--d:.4s">
+        <h3>Bàsic</h3>
+        <div class="p"><span class="num gold">250 €</span><small>per jugador i per lliga</small></div>
+        <ul><li>Camp de gespa artificial</li><li>Àrbitre federat</li><li>Assegurança d’accidents</li><li>Samarreta de l’equip</li><li>Gravació dels partits</li><li>App: estadístiques, Fantasy i missions</li><li>Gala de premis</li></ul>
+      </div>
+      <div class="card plan top a r" style="--d:.6s">
+        <span class="tag">El més complet</span>
+        <h3>Tot inclòs</h3>
+        <div class="p"><span class="num gold">312,50 €</span><small>per jugador i per lliga</small></div>
+        <ul><li>Tot el que té el pla Bàsic</li><li class="x">2 entrenaments setmanals d’una hora</li><li class="x">Entrenador titulat</li><li class="x">Anàlisi de vídeo</li></ul>
+        <p class="t" style="margin-top:auto;font-size:25px;color:var(--mut)">Són els 250 € de la quota més 12,50 € al mes durant els cinc mesos de lliga.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · NÚMEROS -->
+  <section class="s" data-name="Números">
+    <div class="kick a">Previsió del primer semestre</div>
+    <h1 class="a" style="--d:.12s">Els números <span class="gold">surten</span></h1>
+    <div class="fin">
+      <div class="br in a fd" style="--d:.4s"><div class="lb">Ingressos</div><div class="tk"><div class="fill"><span class="num"><span data-n="46625" data-delay="700">0</span> €</span></div></div></div>
+      <div class="br ex a fd" style="--d:.6s"><div class="lb">Despeses</div><div class="tk"><div class="fill"><span class="num"><span data-n="17155.64" data-d="2" data-delay="1200">0</span> €</span></div></div></div>
+    </div>
+    <div class="kp">
+      <div class="card f"><div class="num gold">16</div><p>equips de 12 jugadors a cada lliga</p></div>
+      <div class="card f"><div class="num gold">2</div><p>fonts d’ingressos: les quotes dels jugadors i el patrocini</p></div>
+      <div class="card f"><div class="num gold">1.320 €</div><p>de material esportiu que no cal tornar a comprar a la segona lliga</p></div>
+      <div class="card f"><div class="num gold">10.500 €</div><p>posem els tres socis: 3.500 € cadascun</p></div>
+    </div>
+  </section>
+
+  <!-- 17 · EQUIP -->
+  <section class="s" data-name="Equip">
+    <div class="kick a">L’equip promotor</div>
+    <h1 class="a" style="--d:.12s">Tres socis. <span class="gold">Tres posicions.</span></h1>
+    <div class="tm">
+      <div class="card a" style="--d:.4s"><div class="av"><i class="ico" style="--c:5;--r:0;--s:92px"></i></div><h3>Amine Isslal</h3><div class="ro">El camp</div><p>Fa que la competició funcioni: clubs, entrenadors i àrbitres de la comarca.</p><div class="sh">33,3 %</div></div>
+      <div class="card a" style="--d:.6s"><div class="av"><i class="ico" style="--c:7;--r:0;--s:92px"></i></div><h3>Arnau Piñol</h3><div class="ro">L’app</div><p>Fa que la tecnologia funcioni: dades, estadístiques i Fantasy.</p><div class="sh">33,3 %</div></div>
+      <div class="card a" style="--d:.8s"><div class="av"><i class="ico" style="--c:7;--r:2;--s:92px"></i></div><h3>Alejandro Romero</h3><div class="ro">La gent</div><p>Fa que hi hagi jugadors i patrocinadors: xarxes, comunicació i vendes.</p><div class="sh">33,3 %</div></div>
+    </div>
+    <p class="lead f" style="font-size:30px;margin-top:40px;max-width:none">Societat limitada amb seu a Vilafranca. No tenim camps propis: <b>lloguem franges horàries</b> i contractem àrbitres i entrenadors titulats. Ens formem en gestió amb la <b>Xarxa Emprèn</b> del Consell Comarcal.</p>
+  </section>
+
+  <!-- 18 · FUTUR -->
+  <section class="s" data-name="Futur">
+    <div class="kick a">I després</div>
+    <h1 class="a" style="--d:.12s">On volem <span class="gold">arribar</span></h1>
+    <div class="fu">
+      <div class="card vis a z" style="--d:.4s"><div class="kick" style="justify-content:center;font-size:22px">En tres anys</div><div class="num gold">+<span data-n="500" data-delay="600">0</span></div><p>jugadors actius per temporada.<br>La plataforma de referència del futbol amateur al Penedès.</p></div>
+      <div class="rd">
+        <div class="f"><i class="ico" style="--c:0;--r:0;--s:62px"></i><h4>Tornejos de cap de setmana</h4></div>
+        <div class="f"><i class="ico" style="--c:3;--r:0;--s:62px"></i><h4>Lliga femenina</h4></div>
+        <div class="f"><i class="ico" style="--c:7;--r:5;--s:62px"></i><h4>Lliga de veterans, més de 35 anys</h4></div>
+        <div class="f"><i class="ico" style="--c:7;--r:2;--s:62px"></i><h4>Tornejos per a empreses</h4></div>
+        <div class="f"><i class="ico" style="--c:2;--r:5;--s:62px"></i><h4>Noves seus al Penedès</h4></div>
+        <div class="f"><i class="ico" style="--c:4;--r:2;--s:62px"></i><h4>Botiga de marxandatge a l’app</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 · TANCAMENT -->
+  <section class="s c" id="end" data-name="Preguntes">
+    <img class="em a z" src="emblema.png" alt="">
+    <h1 class="a" style="--d:.4s">El teu futbol<br><span class="gold">comença ara.</span></h1>
+    <p class="lead a" style="--d:.9s;letter-spacing:.2em;text-transform:uppercase;font-size:28px;color:var(--mut)">Alejandro Romero · Amine Isslal · Arnau Piñol</p>
+    <div class="cori" style="right:90px;bottom:50px;--h:300px;--d:1.5s;flex-direction:column;align-items:center;gap:14px"><div class="bub" style="margin-bottom:0;font-size:44px;border-radius:26px 26px 26px 26px;padding:20px 36px">Preguntes?</div><img src="cori.webp" alt=""></div>
+  </section>
+
+  <div id="hud"><div class="b"><img src="emblema.png" alt="">CONCORDIA</div><div class="n"><span id="hname"></span> &nbsp;·&nbsp; <b id="hnum"></b></div></div>
+  <div id="sweep"></div>
+  <div id="bar"></div>
+  <div id="nav"><button id="bp" title="Anterior">‹</button><button id="bn" title="Següent">›</button><button id="bf" title="Pantalla completa">⛶</button></div>
+</div>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const S = [...document.querySelectorAll('.s')];
+  const s0 = S[0];
+  let i = -1;
+  const $ = id => document.getElementById(id);
+
+  // ----- Escala -----
+  const fit = () => {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transform = `scale(${k}) translate(-50%,-50%)`;
+  };
+  addEventListener('resize', fit); fit();
+
+  // ----- Comptadors -----
+  const fmt = (v, d) => v.toLocaleString('ca-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
+  const count = el => {
+    const to = parseFloat(el.dataset.n), d = +(el.dataset.d || 0), delay = +(el.dataset.delay || 300), dur = 1500;
+    el.textContent = fmt(0, d);
+    clearTimeout(el._t); cancelAnimationFrame(el._r);
+    el._t = setTimeout(() => {
+      const t0 = performance.now();
+      const step = t => {
+        const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = fmt(to * e, d);
+        if (p < 1) el._r = requestAnimationFrame(step); else el.textContent = fmt(to, d);
+      };
+      el._r = requestAnimationFrame(step);
+    }, delay);
+  };
+
+  // ----- So -----
+  const snd = {};
+  let muted = false;
+  const play = (n, vol = 1, loop = false) => {
+    try {
+      const a = new Audio(`${n}.mp3`); a.volume = muted ? 0 : vol; a.loop = loop; a._v = vol;
+      a.play().catch(() => {}); (snd[n] = snd[n] || []).push(a); return a;
+    } catch (e) { return null; }
+  };
+  const fadeOut = (n, ms = 500) => (snd[n] || []).splice(0).forEach(a => {
+    const v0 = a.volume, t0 = performance.now();
+    const f = t => { const p = Math.min(1, (t - t0) / ms); a.volume = v0 * (1 - p); p < 1 ? requestAnimationFrame(f) : a.pause(); };
+    requestAnimationFrame(f);
+  });
+  const stopAll = () => Object.keys(snd).forEach(n => fadeOut(n, 250));
+
+  // ----- Obertura -----
+  let intro = 'idle', timers = [];
+  const at = (t, fn) => timers.push(setTimeout(fn, t * 1000));
+  const v = (id, on = true) => $(id).classList.toggle('v', on);
+  const introReset = () => { ['iline', 'sl1', 'sl2', 'sl3', 'fins', 'glow', 'flash'].forEach(id => v(id, false)); };
+  const introDone = still => {
+    timers.forEach(clearTimeout); timers = []; introReset();
+    intro = 'done'; s0.classList.remove('run'); s0.classList.toggle('still', !!still); s0.classList.add('done');
+  };
+  const introStart = () => {
+    intro = 'run'; s0.classList.remove('done', 'still'); s0.classList.add('run'); introReset();
+    play('drone', .55, true); play('heartbeat', .7, true);
+    at(.8, () => v('iline'));
+    at(4.4, () => v('iline', false));
+    at(5.4, () => { v('sl1'); play('braam', .9); });
+    at(6.9, () => { v('sl1', false); v('sl2'); play('braam', .9); });
+    at(8.4, () => { v('sl2', false); v('sl3'); play('braam', 1); });
+    at(9.9, () => { v('sl3', false); fadeOut('drone', 200); fadeOut('heartbeat', 200); fadeOut('braam', 300); });
+    at(11.3, () => v('fins'));
+    at(12.9, () => { v('fins', false); v('glow'); play('riser', .9); });
+    at(15.4, () => { play('impact', 1); introDone(false); v('flash'); });
+  };
+
+  // ----- Vídeos i app -----
+  const vidOf = s => s.querySelector('video');
+  const vidReset = s => { const x = vidOf(s); if (!x) return; x.pause(); try { x.currentTime = 0; } catch (e) {} s._played = false; s.querySelector('.vplay').classList.remove('h'); };
+  const vidPlay = s => { const x = vidOf(s); s._played = true; s.querySelector('.vplay').classList.add('h'); x.volume = muted ? 0 : 1; x.play().catch(() => {}); };
+  S.filter(s => s.hasAttribute('data-video')).forEach(s => {
+    const x = vidOf(s);
+    s.querySelector('.vplay').addEventListener('click', () => vidPlay(s));
+    x.addEventListener('click', () => x.paused ? x.play() : x.pause());
+  });
+  const appLoad = n => S.forEach((s, k) => { const f = s.querySelector('iframe[data-src]'); if (f && Math.abs(k - n) <= 1 && !f.src) f.src = f.dataset.src; });
+  document.querySelectorAll('iframe').forEach(f => f.addEventListener('mouseleave', () => { f.blur(); window.focus(); }));
+
+  // ----- Navegació -----
+  const frs = s => [...s.querySelectorAll('.f')];
+  const sweep = () => { const w = $('sweep'); w.classList.remove('go'); void w.offsetWidth; w.classList.add('go'); };
+  const show = (n, back = false) => {
+    n = Math.max(0, Math.min(S.length - 1, n));
+    if (n === i) return;
+    const prevS = S[i];
+    if (prevS) { vidReset(prevS); prevS.classList.remove('dim'); }
+    if (i === 0) { stopAll(); if (intro === 'run') introDone(true); }
+    if (i >= 0) { sweep(); play('whoosh_short', .25); }
+    S.forEach((s, k) => s.classList.toggle('on', k === n));
+    const s = S[n];
+    frs(s).forEach(f => f.classList.toggle('show', back));
+    if (back && s.dataset.dim) s.classList.add('dim');
+    s.querySelectorAll('[data-n]').forEach(count);
+    if (n === 0 && intro === 'done') s0.classList.add('still');
+    i = n;
+    stage.classList.toggle('cover-mode', n === 0);
+    $('hname').textContent = s.dataset.name || '';
+    $('hnum').textContent = String(n + 1).padStart(2, '0') + ' / ' + S.length;
+    $('bar').style.width = (n / (S.length - 1) * 100) + '%';
+    appLoad(n);
+    try { history.replaceState(null, '', '#' + (n + 1)); } catch (e) {}
+  };
+  const next = () => {
+    const s = S[i];
+    if (i === 0 && intro === 'idle') return introStart();
+    if (i === 0 && intro === 'run') { stopAll(); play('impact', .8); introDone(false); v('flash'); return; }
+    if (s.hasAttribute('data-video') && !s._played) return vidPlay(s);
+    const f = frs(s).find(f => !f.classList.contains('show'));
+    if (f) { f.classList.add('show'); if (s.dataset.dim && frs(s).indexOf(f) === 0) s.classList.add('dim'); f.querySelectorAll('[data-n]').forEach(count); return; }
+    show(i + 1);
+  };
+  const prev = () => {
+    const s = S[i];
+    const shown = frs(s).filter(f => f.classList.contains('show'));
+    if (shown.length) { shown.pop().classList.remove('show'); if (s.dataset.dim && shown.length === 0) s.classList.remove('dim'); return; }
+    show(i - 1, true);
+  };
+  const full = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {});
+  const key = k => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter', 'ArrowDown'].includes(k)) next();
+    else if (['ArrowLeft', 'PageUp', 'Backspace', 'ArrowUp'].includes(k)) prev();
+    else if (k === 'Home') show(0, true);
+    else if (k === 'End') show(S.length - 1);
+    else if (k === 'f' || k === 'F') full();
+    else if (k === 'm' || k === 'M') { muted = !muted; Object.values(snd).flat().forEach(a => a.volume = muted ? 0 : a._v); document.querySelectorAll('video').forEach(x => x.volume = muted ? 0 : 1); }
+    else if ((k === 'r' || k === 'R') && i === 0) { stopAll(); timers.forEach(clearTimeout); timers = []; introStart(); }
+    else if (k === 'p' || k === 'P') { const x = vidOf(S[i]); if (x) x.paused ? x.play() : x.pause(); }
+    else return false;
+    return true;
+  };
+  addEventListener('keydown', e => { if (e.ctrlKey || e.metaKey || e.altKey) return; if (key(e.key)) e.preventDefault(); });
+  addEventListener('message', e => { if (e.data && e.data.concordiaKey) key(e.data.concordiaKey); });
+  $('bn').onclick = next; $('bp').onclick = prev; $('bf').onclick = full;
+  s0.addEventListener('click', () => { if (i === 0 && intro === 'idle') introStart(); });
+
+  // ----- Ratolí inactiu -----
+  let idleT; const wake = () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add('idle'), 2500); };
+  addEventListener('mousemove', wake); wake();
+
+  // ----- Partícules daurades -----
+  const cv = $('fx'), cx = cv.getContext('2d');
+  const P = Array.from({length: 70}, () => ({x: Math.random() * 1920, y: Math.random() * 1080, r: .6 + Math.random() * 2.4, v: .12 + Math.random() * .5, d: Math.random() * 6.28, a: .15 + Math.random() * .55}));
+  let last = 0;
+  const tick = t => {
+    requestAnimationFrame(tick);
+    if (t - last < 33 || document.hidden) return; last = t;
+    cx.clearRect(0, 0, 1920, 1080);
+    const dark = i === 0 && intro !== 'done';
+    if (dark) return;
+    for (const p of P) {
+      p.y -= p.v * 2; p.x += Math.sin(t / 1400 + p.d) * .5;
+      if (p.y < -10) { p.y = 1090; p.x = Math.random() * 1920; }
+      const tw = .6 + .4 * Math.sin(t / 600 + p.d * 3);
+      cx.globalAlpha = p.a * tw; cx.fillStyle = '#f2d78e';
+      cx.shadowColor = '#c8933a'; cx.shadowBlur = 12;
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.283); cx.fill();
+    }
+    cx.globalAlpha = 1; cx.shadowBlur = 0;
+  };
+  requestAnimationFrame(tick);
+
+  // ----- Inici -----
+  const h = parseInt(location.hash.slice(1), 10);
+  if (h > 1) { introDone(true); show(h - 1); } else show(0);
+  window.__deck = {show, next, prev, get i() { return i; }, n: S.length};
+})();
+</script>
+</body>
+</html>
